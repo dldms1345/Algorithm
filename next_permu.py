@@ -10,7 +10,7 @@
     3. 그 값이 j번째 수라고 하면 i-1과 j번째 수를 swap
     4. i 이후 숫자를 뒤집는다(=오름차순으로 만든다. 앞단 숫자를 가지는 가장 첫 순열은 앞단을 빼고 오름차순으로 정렬되어있다.).
 '''
-
+'''
 def next_permutation(a):
     if a == sorted(a, reverse=True):
         return False
@@ -33,6 +33,7 @@ else:
     for i in a:
         print(i, end=' ')
     # print(' '.join(map(str, a)))
+''' 
 '''
 # 메모리 초과 나옴..
 from itertools import permutations
@@ -47,3 +48,32 @@ else:
     i = b.index(tuple(a))
     print(' '.join(map(str, b[i+1])))
 '''
+
+def next_permu(crr_list, answer):
+    if crr_list == sorted(crr_list, reverse=True):
+        print(crr_list)
+        return False
+    i = len(crr_list)-1
+    while i > 0:
+        if crr_list[i] < crr_list[i-1]:
+            i -= 1
+    j = len(crr_list)-1   
+    while crr_list[j] > crr_list[i-1]:
+        j -= 1
+    crr_list[i-1], crr_list[j] = crr_list[j], crr_list[i-1]
+    b=1
+    for a in range(i+1, (len(crr_list)-i+1)/2):
+        crr_list[a], crr_list[len(crr_list)-b]
+        b +=1
+    print(crr_list)
+    #answer.append(crr_list)
+    return next_permu(crr_list)
+    
+    
+def solution(mylist):
+    answer = []
+    mylist.sort()
+    next_permu(mylist, answer)
+    return answer
+
+solution([3,2])
