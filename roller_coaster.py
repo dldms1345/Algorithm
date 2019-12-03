@@ -58,8 +58,6 @@ else:
                     i = (i+1)%(max_index + 1)
                 if personnel + q[i%(max_index + 1)] > l:
                     break
-                if i == start_index:
-                    break
             cost += personnel
             ch[start_index] = [personnel, i]
 
